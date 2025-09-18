@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TimeKeeper GUI</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+  <div class="container mt-4">
+    <h1 class="mb-4">⏰ TimeKeeper</h1>
+    <form method="POST" class="card p-3 mb-4 shadow-sm">
+      <div class="mb-3">
+        <label class="form-label">Task</label>
+        <input type="text" name="task" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Note</label>
+        <textarea name="note" class="form-control"></textarea>
+      </div>
+      <button class="btn btn-primary">Save</button>
+    </form>
+    <h3>📋 Recent Entries</h3>
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Timestamp</th>
+          <th>Task</th>
+          <th>Note</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for e in entries %}
+        <tr>
+          <td>{{ e['Timestamp'] if 'Timestamp' in e else '' }}</td>
+          <td>{{ e['Task'] if 'Task' in e else '' }}</td>
+          <td>{{ e['Note'] if 'Note' in e else '' }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
